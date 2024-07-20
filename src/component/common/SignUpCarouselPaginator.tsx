@@ -38,24 +38,29 @@ const SignUpCarouselPaginator = ({ data, scrollX }) => {
           );
         })}
       </View>
-      {data.map((_, i) => {
-        const inputRange = [(i - 1) * width, i * width, (i + 1) * width];
+      <View style={styles.stepTextContainer}>
+        {data.map((_, i) => {
+          const inputRange = [(i - 1) * width, i * width, (i + 1) * width];
 
-        const stepTextOpacity = scrollX.interpolate({
-          inputRange,
-          outputRange: [0, 1, 0],
-          extrapolate: 'clamp',
-        });
+          const stepTextOpacity = scrollX.interpolate({
+            inputRange,
+            outputRange: [0, 1, 0],
+            extrapolate: 'clamp',
+          });
 
-        return (
-          <Animated.View key={`stepText-${i}`} style={{ opacity: stepTextOpacity }}>
-            <Text style={styles.stepText}>
-              <Text style={styles.activeStepText}>{`step${i + 1}`}</Text>
-              <Text style={styles.totalStepText}>{`/${data.length}`}</Text>
-            </Text>
-          </Animated.View>
-        );
-      })}
+          return (
+            <Animated.View
+              key={`stepText-${i}`}
+              style={[styles.stepTextWrapper, { opacity: stepTextOpacity }]}
+            >
+              <Text style={styles.stepText}>
+                <Text style={styles.activeStepText}>{`step${i + 1}`}</Text>
+                <Text style={styles.totalStepText}>{`/${data.length}`}</Text>
+              </Text>
+            </Animated.View>
+          );
+        })}
+      </View>
     </View>
   );
 };
@@ -70,12 +75,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 44,
   },
   dot: {
     backgroundColor: COLORS.yellow,
     height: 5,
     marginTop: 11,
+  },
+  stepTextContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 20,
+  },
+  stepTextWrapper: {
+    position: 'absolute',
   },
   stepText: {
     fontSize: 12,

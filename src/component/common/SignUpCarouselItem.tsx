@@ -20,7 +20,7 @@ export default SignUpCarouselItem;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
   },
   description: {
@@ -29,11 +29,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center',
   },
-  image: {
-    flex: 0.7,
-    justifyContent: 'center',
-    width: '100%',
-  },
+  // image: {
+  //   // flex: 0.7,
+  //   justifyContent: 'center',
+  //   width: '100%',
+  // },
   title: {
     color: COLORS.black,
     fontFamily: FONTS.interLight,
